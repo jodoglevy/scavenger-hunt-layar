@@ -21,7 +21,7 @@ class Admin extends CI_Controller {
 			header('Location: ' . $str . '/');
 		}
 		
-		//$this->load->model('passwords'); 
+		$this->load->model('passwords'); 
 		if(true || $this->passwords->checkLogin($this,'Admin')) // TODO: fix
 		{			
 			$this->load->view('admin');
@@ -29,7 +29,7 @@ class Admin extends CI_Controller {
 	}
 
     function createUrl() {
-        //$this->load->model('passwords'); 
+        $this->load->model('passwords'); 
 		if(true || $this->passwords->checkLogin($this,'Admin')) // TODO: fix
 		{			
 			$this->load->view('createUrl');
@@ -37,12 +37,13 @@ class Admin extends CI_Controller {
     }
 	
 	/*
-	 * Controller for the pages where the admin can change the admin or doctor password
+	 * Controller for the pages where the admin can change the password
 	 */
 	function passwords($user_type)
 	{
 		$user_type = ucwords($user_type);
 		$data = array("user_type" => $user_type, "message" => "");
+
 		$this->load->model('passwords'); 
 		if($this->passwords->checkLogin($this,'Admin'))
 		{
