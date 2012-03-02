@@ -18,10 +18,15 @@ $(function() {
 			alert('Please enter a numeric point value');
 			return false;
 		}
-		
-		var url = window.location.host + "/hunt/?q="+encodeURIComponent(question)+"&answer="+encodeURIComponent(MD5(answer))+"&points="+encodeURIComponent(points);
-		$("#url").html("<a href='"+url+"'>"+url+"</a>");
+
+        var hash = makeHash(question,answer,points);
+		var url = window.location.host + "/hunt/?q="+encodeURIComponent(question)+"&checksum="+encodeURIComponent(hash)+"&points="+encodeURIComponent(points);
+		$("#url").html("<a href='http://"+url+"'>"+url+"</a>");
 		
 		return false;
 	});
 });
+
+function makeHash(question,answer,points) {
+    return MD5(question+answer+points);
+}
