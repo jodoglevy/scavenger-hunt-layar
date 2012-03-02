@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 2.11.6
+-- version 3.4.10.1
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 04, 2010 at 02:12 PM
--- Server version: 5.0.51
--- PHP Version: 5.2.6
+-- Generation Time: Mar 01, 2012 at 05:21 PM
+-- Server version: 5.1.60
+-- PHP Version: 5.2.17
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -16,7 +17,7 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `layar-hunt`
+-- Database: `digitea8_layar-hunt`
 --
 
 -- --------------------------------------------------------
@@ -25,6 +26,7 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 -- Table structure for table `tbl_passwords`
 --
 
+DROP TABLE IF EXISTS `tbl_passwords`;
 CREATE TABLE IF NOT EXISTS `tbl_passwords` (
   `user_level` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
@@ -36,4 +38,8 @@ CREATE TABLE IF NOT EXISTS `tbl_passwords` (
 --
 
 INSERT INTO `tbl_passwords` (`user_level`, `password`) VALUES
-('Admin', 'cfe3476f784d0f55b2005b41b7e6bf35acc05f51');
+('Admin', 'd033e22ae348aeb5660fc2140aec35850c4da997');
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
