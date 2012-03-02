@@ -22,7 +22,7 @@ class Admin extends CI_Controller {
 		}
 		
 		$this->load->model('passwords'); 
-		if(true || $this->passwords->checkLogin($this,'Admin')) // TODO: fix
+		if($this->passwords->checkLogin($this,'Admin'))
 		{			
 			$this->load->view('admin');
 		}
@@ -30,7 +30,7 @@ class Admin extends CI_Controller {
 
     function createUrl() {
         $this->load->model('passwords'); 
-		if(true || $this->passwords->checkLogin($this,'Admin')) // TODO: fix
+		if($this->passwords->checkLogin($this,'Admin'))
 		{			
 			$this->load->view('createUrl');
 		}
