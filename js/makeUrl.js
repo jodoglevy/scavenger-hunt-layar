@@ -1,7 +1,7 @@
 $(function() {
 	$("#form").submit(function() {	
 		var question = $("#question").val();
-		var answer = $("#answer").val().toLowerCase();
+		var answer = $("#answer").val();
 		var points = parseInt($("#points").val());
 		
 		if(question.length == 0) {
@@ -20,13 +20,13 @@ $(function() {
 		}
 
         var hash = makeHash(question,answer,points);
-		var url = window.location.host + "/hunt/?q="+encodeURIComponent(question)+"&checksum="+encodeURIComponent(hash)+"&points="+encodeURIComponent(points);
-		$("#url").html("<a href='http://"+url+"'>"+url+"</a>");
+		var url = "http://" + window.location.host + "/hunt/?question="+encodeURIComponent(question)+"&checksum="+encodeURIComponent(hash)+"&points="+encodeURIComponent(points);
+		$("#url").html("<a target='_blank' href='"+url+"'>"+url+"</a>");
 		
 		return false;
 	});
 });
 
 function makeHash(question,answer,points) {
-    return MD5(question+answer+points);
+    return MD5(question+answer.toLowerCase()+points);
 }

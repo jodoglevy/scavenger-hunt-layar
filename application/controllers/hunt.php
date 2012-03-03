@@ -16,11 +16,27 @@ class Hunt extends CI_Controller {
 	function index()
 	{
 		$data = array(
-            "question" => $this->input->get('q'),
-            "checksum" => $this->input->get('checksum'),
-            "points" => $this->input->get('points')
+            "question" => $this->input->get_post('question'),
+            "checksum" => $this->input->get_post('checksum'),
+            "points" => $this->input->get_post('points'),
+            "answer" => $this->input->get_post('answer'),
+            "error" => ""
         );
 
-		$this->load->view('hunt', $data);
+        if(strlen($data["answer"]) > 0) 
+        {
+            $this->load->model('answer');
+            if(!$this->answer->checkAnswer($data["question"],$data["answer"],$data["points"],$data["checksum"]))
+            {
+                $data["error"] = "That answer was incorrect";
+            }
+            else
+            {
+                //temp - should be changed to redirect to enter team name page
+                $data["error"] = "Correct!";
+            }
+        }
+
+        $this->load->view('hunt', $data);
 	}
 }

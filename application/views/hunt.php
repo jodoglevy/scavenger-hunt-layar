@@ -1,5 +1,7 @@
 <html>
 <body>
+<div style="color:red"><?php echo $error;?></div>
+<br /><br />
 <div><?php echo $question;?></div>
 <br /><br />	
 <form action="" method="post">
