@@ -32,8 +32,8 @@ class Hunt extends CI_Controller {
             }
             else
             {
-                //temp - should be changed to redirect to enter team name page
-                $data["error"] = "Correct!";
+                $this->load->view('correct', $data);	
+                return;
             }
         }
 

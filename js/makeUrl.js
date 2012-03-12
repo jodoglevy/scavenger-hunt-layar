@@ -21,7 +21,12 @@ $(function() {
 
         var hash = makeHash(question,answer,points);
 		var url = "http://" + window.location.host + "/hunt/?question="+encodeURIComponent(question)+"&checksum="+encodeURIComponent(hash)+"&points="+encodeURIComponent(points);
-		$("#url").html("<a target='_blank' href='"+url+"'>"+url+"</a>");
+
+        if($("#answer").attr("addToUrl") == "yes") {
+            url += "&answer=" + answer;
+        }		
+
+        $("#url").html("<a target='_blank' href='"+url+"'>"+url+"</a>");
 		
 		return false;
 	});

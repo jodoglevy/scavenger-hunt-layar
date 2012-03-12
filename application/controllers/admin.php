@@ -35,6 +35,14 @@ class Admin extends CI_Controller {
 			$this->load->view('createUrl');
 		}
     }
+
+    function createVisionUrl() {
+        $this->load->model('passwords'); 
+		if($this->passwords->checkLogin($this,'Admin'))
+		{			
+			$this->load->view('createVisionUrl');
+		}
+    }
 	
 	/*
 	 * Controller for the pages where the admin can change the password
