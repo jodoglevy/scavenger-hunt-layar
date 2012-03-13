@@ -28,7 +28,7 @@ class Hunt extends CI_Controller {
        
         if(strlen($data["answer"]) > 0) 
         {
-            if(strtolower($data["answer"]) != strtolower($returnData["answer"]))
+            if(trim(strtolower($data["answer"])) != trim(strtolower($returnData["answer"])))
             {
                 $data["error"] = "That answer was incorrect";
             }
@@ -58,7 +58,7 @@ class Hunt extends CI_Controller {
         $this->load->model('question');
         $returnData = $this->question->get($data["id"]);
        
-        if(strtolower($data["answer"]) != strtolower($returnData["answer"]))
+        if(trim(strtolower($data["answer"])) != trim(strtolower($returnData["answer"])))
         {
             $data["error"] = "That answer was incorrect";
         }

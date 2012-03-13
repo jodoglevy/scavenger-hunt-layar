@@ -12,7 +12,8 @@
             $row = $results->row_array(0);
             $auto_id = $row['MAX(id)'] + 1;
 
-            $this->db->query("INSERT INTO tbl_questions (question, points, answer) VALUES ('".$question."',".$points.", '".strtolower($answer)."')");
+            $this->db->query("INSERT INTO tbl_questions (question, points, answer) VALUES 
+            (".$this->db->escape($question).",".$this->db->escape($points).",".$this->db->escape($answer).")");
 
             return "http://" . $_SERVER['HTTP_HOST'] . "/hunt/?id=" . $auto_id;
 		}
