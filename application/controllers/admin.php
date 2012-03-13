@@ -32,16 +32,36 @@ class Admin extends CI_Controller {
         $this->load->model('passwords'); 
 		if($this->passwords->checkLogin($this,'Admin'))
 		{			
-			$this->load->view('createUrl');
-		}
+			if(strlen($this->input->post('question')) == 0)
+            {
+                $this->load->view('createUrl');
+    		}
+            else
+            {
+                $this->load->model('question');
+                $url = $this->question->create($this->input->post('question'),$this->input->post('answer'),$this->input->post('points'));
+                $this->load->view('showUrl', array('url'=>$url));   
+            }
+        }
     }
 
     function createVisionUrl() {
         $this->load->model('passwords'); 
 		if($this->passwords->checkLogin($this,'Admin'))
 		{			
-			$this->load->view('createVisionUrl');
-		}
+			if(strlen($this->input->post('question')) == 0)
+            {
+                $this->load->view('createVisionUrl');
+    		}
+            else
+            {
+                $this->load->model('question');
+                $answer = md5(rand(0,999999));
+                $url = $this->question->create($this->input->post('question'),$answer,$this->input->post('points'));
+                
+                $this->load->view('showUrl', array('url'=>$url."&answer=".$answer));
+            }
+        }
     }
 	
 	/*

@@ -1,14 +1,11 @@
 <html>
 	<head>
-		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-		<script type="text/javascript" src="/js/md5_crypt.js"></script>
-		<script type="text/javascript" src="/js/makeUrl.js"></script>
 	</head>
 	<body>
 		<h4>
 			Create a Question:
 		</h4>
-		<form id="form">
+		<form id="form" method="POST" action="">
 			<div>
 				Question:
 				<br />
@@ -31,9 +28,6 @@
 				<input type="submit" value="Create Url" />
 				<br /><br />
 			</div>
-			Please use the url:
-			<br />
-			<div id="url" type="text" />
 		</form>
 	</body>
 <html>

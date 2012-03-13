@@ -15,18 +15,20 @@ class Hunt extends CI_Controller {
 	 */
 	function index()
 	{
-		$data = array(
-            "question" => $this->input->get_post('question'),
-            "checksum" => $this->input->get_post('checksum'),
-            "points" => $this->input->get_post('points'),
+		 $data = array(
+            "id" => $this->input->get_post('id'),
             "answer" => $this->input->get_post('answer'),
             "error" => ""
         );
 
+        $this->load->model('question');
+        $returnData = $this->question->get($data["id"]);
+
+        $data["question"] = $returnData["question"];
+       
         if(strlen($data["answer"]) > 0) 
         {
-            $this->load->model('answer');
-            if(!$this->answer->checkAnswer($data["question"],$data["answer"],$data["points"],$data["checksum"]))
+            if(strtolower($data["answer"]) != strtolower($returnData["answer"]))
             {
                 $data["error"] = "That answer was incorrect";
             }
@@ -38,5 +40,34 @@ class Hunt extends CI_Controller {
         }
 
         $this->load->view('hunt', $data);
+	}
+
+    /*
+	 * Controller for submitting your team after you have answered a question correctly
+	 */
+	function team()
+	{
+		 $data = array(
+            "id" => $this->input->post('id'),
+            "answer" => $this->input->post('answer'),
+            "team" => $this->input->post('team'),
+            "error" => "",
+            "message" => ""
+        );
+
+        $this->load->model('question');
+        $returnData = $this->question->get($data["id"]);
+       
+        if(strtolower($data["answer"]) != strtolower($returnData["answer"]))
+        {
+            $data["error"] = "That answer was incorrect";
+        }
+        else
+        {
+            // TODO: do db stuff to record points for team and check that they haven't already answered this.
+            $data["message"] = "Team " . $data["team"] . " earned " . $returnData["points"] . " points!";
+        }
+
+        $this->load->view('team', $data);
 	}
 }

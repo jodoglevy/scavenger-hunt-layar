@@ -3,8 +3,8 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Mar 01, 2012 at 05:21 PM
--- Server version: 5.1.60
+-- Generation Time: Mar 12, 2012 at 08:19 PM
+-- Server version: 5.1.61
 -- PHP Version: 5.2.17
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
@@ -39,6 +39,21 @@ CREATE TABLE IF NOT EXISTS `tbl_passwords` (
 
 INSERT INTO `tbl_passwords` (`user_level`, `password`) VALUES
 ('Admin', 'd033e22ae348aeb5660fc2140aec35850c4da997');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_questions`
+--
+
+DROP TABLE IF EXISTS `tbl_questions`;
+CREATE TABLE IF NOT EXISTS `tbl_questions` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `question` text NOT NULL,
+  `points` int(11) NOT NULL,
+  `answer` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
