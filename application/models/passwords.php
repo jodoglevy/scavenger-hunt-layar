@@ -73,7 +73,7 @@
 		function checkPassword($password,$user_level)
 		{
 			$this->load->database();
-			$query = $this->db->query("SELECT * FROM tbl_passwords WHERE user_level = '".$user_level."'
+			$query = $this->db->query("SELECT * FROM tbl_passwords WHERE user_level = ".$this->db->escape($user_level)."
 				&& password = '" . $this->encrypt($password) . "'");
 				
 				if($query->num_rows() > 0)
@@ -106,7 +106,7 @@
 				else
 				{
 					$query = $this->db->query("UPDATE tbl_passwords SET password = '" . $this->encrypt($new_password) . "'
-					WHERE user_level = '".$user_level."'
+					WHERE user_level = ".$this->db->escape($user_level)."
 					&& password = '" . $this->encrypt($old_password) . "'");	
 					return "Password changed!";
 				}

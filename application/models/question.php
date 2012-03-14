@@ -20,6 +20,8 @@
 
         function get($id)
 		{
+            if(!is_numeric($id)) $id = -1;
+
             $this->load->database();
             
             $results = $this->db->query("SELECT * FROM tbl_questions WHERE id =" . $id);
