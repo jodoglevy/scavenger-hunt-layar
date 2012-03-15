@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Mar 12, 2012 at 08:19 PM
+-- Generation Time: Mar 14, 2012 at 07:29 PM
 -- Server version: 5.1.61
 -- PHP Version: 5.2.17
 
@@ -53,6 +53,23 @@ CREATE TABLE IF NOT EXISTS `tbl_questions` (
   `points` int(11) NOT NULL,
   `answer` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_teams`
+--
+
+DROP TABLE IF EXISTS `tbl_teams`;
+CREATE TABLE IF NOT EXISTS `tbl_teams` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `score` int(10) unsigned NOT NULL,
+  `questions_answered` text NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name` (`name`),
+  KEY `score` (`score`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

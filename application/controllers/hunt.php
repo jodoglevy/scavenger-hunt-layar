@@ -42,6 +42,30 @@ class Hunt extends CI_Controller {
         $this->load->view('hunt', $data);
 	}
 
+    function createteam()
+	{
+        $this->load->model('teams');
+        
+        $data = array(
+            "team" => $this->input->get_post('team'),
+            "error" => "",
+            "message" => ""
+        );
+
+        if(strlen($data["team"]) > 0)
+        {    
+            $data["error"] = $this->teams->create($data["team"]);
+
+            if($data["error"] === NULL)
+            {
+                $data["message"] = "Team " . $data["team"] . " created!";
+                $data["error"] = "";
+            }
+        }
+
+        $this->load->view('createTeam', $data);
+    }
+
     /*
 	 * Controller for submitting your team after you have answered a question correctly
 	 */
