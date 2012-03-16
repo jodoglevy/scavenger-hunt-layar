@@ -1,6 +1,7 @@
 <html>
 <body>
-<span style="color:green">Correct!</span>
+<span style="color:red"><?php echo $error; ?></span><br />
+<span style="color:green"><?php echo $message; ?></span>
 <br /><br />	
 <form action="team" method="post">
 	<label for="answer">Team Name:</label>&nbsp;<input type="text" name="team" />

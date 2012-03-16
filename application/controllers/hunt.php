@@ -18,7 +18,8 @@ class Hunt extends CI_Controller {
 		 $data = array(
             "id" => $this->input->get_post('id'),
             "answer" => $this->input->get_post('answer'),
-            "error" => ""
+            "error" => "",
+            "message" => ""
         );
 
         $this->load->model('question');
@@ -34,6 +35,7 @@ class Hunt extends CI_Controller {
             }
             else
             {
+                $data["message"] = "Correct!";
                 $this->load->view('correct', $data);	
                 return;
             }
@@ -88,10 +90,18 @@ class Hunt extends CI_Controller {
         }
         else
         {
-            // TODO: do db stuff to record points for team and check that they haven't already answered this.
-            $data["message"] = "Team " . $data["team"] . " earned " . $returnData["points"] . " points!";
+            $this->load->model('teams');
+            $data["error"] = $this->teams->answerQuestion($data["team"],$data["id"]);
         }
 
-        $this->load->view('team', $data);
-	}
+        if(strlen($data["error"]) > 0)
+        {
+             $this->load->view('correct', $data);
+        }
+        else
+        {
+            $data["message"] = "Team " . $data["team"] . " earned " . $returnData["points"] . " points!";
+            $this->load->view('team', $data);
+	    }
+    }
 }

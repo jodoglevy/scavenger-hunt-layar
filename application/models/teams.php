@@ -44,8 +44,6 @@
                     $this->load->model('question');
                     $questionData = $this->question->get($questionID);
 
-                    $questionData = $questionData->row_array(0);
-
                     array_push($questions_answered, $questionID);
                     $score = $score + $questionData["points"];
 
