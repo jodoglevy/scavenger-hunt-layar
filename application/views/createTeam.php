@@ -34,6 +34,8 @@
                             <label for="textinput1">
                             </label>
                             <input id="textinput1" placeholder="Enter team name..." value="" type="text" name="team"/>
+                            <input value="<?php echo $answer;?>" type="hidden" name="answer"/>
+                            <input value="<?php echo $id;?>" type="hidden" name="id"/>
                         </fieldset>
                     </div>
                     <input type="submit" data-theme="a" value="Submit" />

@@ -18,6 +18,7 @@ class Hunt extends CI_Controller {
 		 $data = array(
             "id" => $this->input->get_post('id'),
             "answer" => $this->input->get_post('answer'),
+            "team" => $this->input->get_post('team'),
             "error" => "",
             "message" => ""
         );
@@ -50,6 +51,8 @@ class Hunt extends CI_Controller {
         
         $data = array(
             "team" => $this->input->get_post('team'),
+            "id" => $this->input->get_post('id'),
+            "answer" => $this->input->get_post('answer'),
             "error" => "",
             "message" => ""
         );
@@ -62,6 +65,12 @@ class Hunt extends CI_Controller {
             {
                 $data["message"] = "Team " . $data["team"] . " created!";
                 $data["error"] = "";
+
+                if(strlen($data["id"]) > 0)
+                {
+                    header('Location: /hunt/team/?id='.$data['id'].'&answer='.$data['answer'].'&team='.$data['team']);
+                    return;
+                }
             }
         }
 
@@ -74,9 +83,9 @@ class Hunt extends CI_Controller {
 	function team()
 	{
 		 $data = array(
-            "id" => $this->input->post('id'),
-            "answer" => $this->input->post('answer'),
-            "team" => $this->input->post('team'),
+            "id" => $this->input->get_post('id'),
+            "answer" => $this->input->get_post('answer'),
+            "team" => $this->input->get_post('team'),
             "error" => "",
             "message" => ""
         );

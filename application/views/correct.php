@@ -33,7 +33,7 @@
                         <fieldset data-role="controlgroup">
                             <label for="textinput1">
                             </label>
-                            <input id="textinput1" placeholder="Enter team name..." value="" type="text" name="team"/>
+                            <input id="textinput1" placeholder="Enter team name..." value="<?php echo $team;?>" type="text" name="team"/>
                             <input type="hidden" name="answer" value="<?php echo $answer;?>" />
                             <input type="hidden" name="id" value="<?php echo $id;?>" />
                         </fieldset>
@@ -44,7 +44,7 @@
                     <br /><br />
                     <p>
                         Don't have a team yet?<br />
-                        <a href="/hunt/createteam?answered-id=<?php echo $id;?>&answer=<?php echo $answer;?>" data-transition="fade">
+                        <a href="/hunt/createteam?id=<?php echo $id;?>&answer=<?php echo $answer;?>" data-transition="fade">
                             Click here to create one
                         </a>
                     </p>                
