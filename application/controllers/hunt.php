@@ -51,15 +51,16 @@ class Hunt extends CI_Controller {
         
         $data = array(
             "team" => $this->input->get_post('team'),
+            "email" => $this->input->get_post('email'),
             "id" => $this->input->get_post('id'),
             "answer" => $this->input->get_post('answer'),
             "error" => "",
             "message" => ""
         );
 
-        if(strlen($data["team"]) > 0)
+        if(strlen($data["team"]) > 0 && strlen($data["email"]) > 0)
         {    
-            $data["error"] = $this->teams->create($data["team"]);
+            $data["error"] = $this->teams->create($data["team"], $data["email"]);
 
             if($data["error"] === NULL)
             {

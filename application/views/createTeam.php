@@ -38,6 +38,13 @@
                             <input value="<?php echo $id;?>" type="hidden" name="id"/>
                         </fieldset>
                     </div>
+                    <div data-role="fieldcontain">
+                        <fieldset data-role="controlgroup">
+                            <label for="textinput2">
+                            </label>
+                            <input id="textinput2" placeholder="Enter team captain's email address..." value="" type="text" name="email"/>
+                        </fieldset>
+                    </div>
                     <input type="submit" data-theme="a" value="Submit" />
                 </form>
             </div>

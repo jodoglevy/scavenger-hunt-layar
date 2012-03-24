@@ -1,7 +1,7 @@
 <?php
 	class Teams extends CI_Model 
 	{
-		function create($teamName)
+		function create($teamName, $teamEmail)
 		{
             $name = strtolower($teamName);
             $empty_array = array();
@@ -15,8 +15,8 @@
                  return "Team " . $teamName . " already exists!"; 
             }
 
-            $this->db->query("INSERT INTO tbl_teams (name, score, questions_answered) VALUES 
-            (".$this->db->escape($name).",0,".$this->db->escape(serialize($empty_array)).")");
+            $this->db->query("INSERT INTO tbl_teams (name, email, score, questions_answered) VALUES 
+            (".$this->db->escape($name).",".$this->db->escape($teamEmail).",0,".$this->db->escape(serialize($empty_array)).")");
             
             return NULL;
 		}
