@@ -63,6 +63,17 @@ class Admin extends CI_Controller {
             }
         }
     }
+
+    function deleteTeams()
+    {
+        $this->load->model('passwords'); 
+		if($this->passwords->checkLogin($this,'Admin'))
+		{	
+            $this->load->model('teams');
+            $this->teams->deleteAll();
+            $this->load->view('teamsDeleted');
+        }
+    }
 	
 	/*
 	 * Controller for the pages where the admin can change the password

@@ -59,5 +59,11 @@
                 return "Team " . $teamName . " does not exist!";
             }
 		}
+
+        function deleteAll()
+        {
+            $this->load->database();
+            $this->db->query("DELETE FROM tbl_teams");
+        }
     }
 ?>
