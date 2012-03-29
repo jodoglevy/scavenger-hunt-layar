@@ -114,4 +114,14 @@ class Hunt extends CI_Controller {
             $this->load->view('team', $data);
 	    }
     }
+
+    function leaderboard()
+    {
+        $this->load->model('teams');
+
+        $data = array();
+        $data["teams"] = $this->teams->getAllSortedByScore();
+
+        $this->load->view('leaderboard', $data);
+    }
 }

@@ -18,24 +18,23 @@
         <div data-role="page" id="page1">
             <div data-theme="a" data-role="header">
                 <h3>
-                    Layar Hunt
+                    Leaderboard
                 </h3>
             </div>
             <div data-role="content">
-                <p style="color:red">
-                    <?php echo $error;?>
-                </p>
-                <p style="color:green">
-                    <?php echo $message;?>
-                </p>
-                <div>
-                    <br /><br />
-                    <p>
-                        <a href="/hunt/leaderboard" data-transition="fade">
-                            View Leaderboard
-                        </a>
-                    </p>                
-                </div>
+                <ol data-role="listview" class="ui-listview">
+				    <?php 
+                        foreach ($teams as $team)
+                        {
+                    ?>
+                            <li class="ui-li ui-li-static ui-body-c">
+                                <?php echo "&nbsp;" . $team["name"]; ?>
+                                <span class="ui-li-count ui-btn-up-c ui-btn-corner-all"><?php echo $team["score"] . " points"; ?></span>                            
+                            </li>
+                    <?php 
+                        }
+                    ?>
+			    </ol>
             </div>
         </div>
         <script>

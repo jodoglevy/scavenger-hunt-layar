@@ -65,5 +65,12 @@
             $this->load->database();
             $this->db->query("DELETE FROM tbl_teams");
         }
+
+        function getAllSortedByScore()
+        {
+            $this->load->database();
+            $results = $this->db->query("SELECT * FROM tbl_teams ORDER BY score DESC");
+            return $results->result_array();
+        }
     }
 ?>
