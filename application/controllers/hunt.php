@@ -118,9 +118,17 @@ class Hunt extends CI_Controller {
     function leaderboard()
     {
         $this->load->model('teams');
+        $this->load->model('passwords');
 
         $data = array();
         $data["teams"] = $this->teams->getAllSortedByScore();
+
+        $loggedIn = $this->passwords->isLoggedIn('Admin');
+        for($i = 0; $i < count($data["teams"]); $i ++)
+        {
+            if(!$loggedIn) $data["teams"][$i]["email"] = "";
+            else $data["teams"][$i]["email"] = "(" . $data["teams"][$i]["email"] . ")";
+        }
 
         $this->load->view('leaderboard', $data);
     }

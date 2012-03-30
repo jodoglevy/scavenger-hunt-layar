@@ -47,6 +47,12 @@
 				return true;		
 			}
 		}
+
+        function isLoggedIn($user_level)
+        {
+            session_start();
+            return isset($_SESSION[$user_level]);
+        }
 		
 		/*
 		 * Logs the user out
