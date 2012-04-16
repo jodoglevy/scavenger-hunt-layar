@@ -9,11 +9,11 @@ Scavenger-Hunt-Layar can be installed on any server that is able to run PHP and 
 Using MySQL or PHPMyAdmin, import db_schemas/db_schemas.sql to your database.
 
 To connect the system to your database, copy application/config/database-sample.php to application/config/database.php. Open up this new file and set the database server / name, username, and password for you database server:
-
-  $ $db['default']['hostname'] = 'localhost';
-  $ $db['default']['username'] = 'my-username';
-  $ $db['default']['password'] = 'my-password';
-  $ $db['default']['database'] = 'my-db-name';
+    
+    $db['default']['hostname'] = 'localhost';
+    $db['default']['username'] = 'my-username';
+    $db['default']['password'] = 'my-password';
+    $db['default']['database'] = 'my-db-name';
 
 You can now start using the system by accessing the admin interface at your-server/admin. The default admin password is 'admin'. You should change the admin password (via the admin interface) the first time you log in to make the system more secure.
 
