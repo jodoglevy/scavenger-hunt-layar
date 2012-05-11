@@ -28,7 +28,7 @@
                         {
                     ?>
                             <li class="ui-li ui-li-static ui-body-c">
-                                <?php echo "&nbsp;" . $team["name"] . " " . $team["email"]; ?>
+                                <?php echo "&nbsp;" . htmlspecialchars($team["name"]) . " " . htmlspecialchars($team["email"]); ?>
                                 <span class="ui-li-count ui-btn-up-c ui-btn-corner-all"><?php echo $team["score"] . " points"; ?></span>                            
                             </li>
                     <?php 
